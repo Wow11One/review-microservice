@@ -50,7 +50,7 @@ export default async () => {
     next();
   });
 
-  app.use('/', routers);
+  app.use('/api', routers);
 
   const port = await getConsulValue(`${env}/port`) as number;
   const address = await getConsulValue(`${env}/address`) as string;

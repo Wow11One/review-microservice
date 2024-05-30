@@ -41,3 +41,5 @@ services:
 
 networks:
   app-network:
+    name: book_app_network
+    external: true

@@ -1,10 +1,10 @@
 import express from 'express';
-import groups from './groups';
+import reviews from './review';
 import students from './students';
 
 const router = express.Router();
 
-router.use('/groups', groups);
+router.use('/reviews', reviews);
 router.use('/students', students);
 
 export default router;

@@ -3,7 +3,6 @@ import express from 'express';
 import sinon from 'sinon';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import routers from 'src/routers/groups';
 import Group from 'src/model/group';
 import { ObjectId } from 'mongodb';
 
@@ -17,7 +16,7 @@ const sandbox = sinon.createSandbox();
 const app = express();
 
 app.use(bodyParser.json({ limit: '1mb' }));
-app.use('/', routers);
+
 
 describe('Group controller', () => {
 
