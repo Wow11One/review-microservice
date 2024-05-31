@@ -1,7 +1,7 @@
 import Review, { IReview } from 'src/model/review';
 import { ReviewDto } from 'src/dto/review/reviewDto';
 import { ReviewSaveDto } from 'src/dto/review/reviewSaveDto';
-import { bookExists } from 'src/clients/book';
+import bookExists from 'src/clients/book';
 import { ReviewQueryDto } from '../../dto/review/reviewQueryDto';
 
 export const create = async (reviewSaveDto: ReviewSaveDto): Promise<ReviewDto> => {

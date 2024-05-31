@@ -18,7 +18,7 @@ export const create = async (req: Request, res: Response) => {
     });
 
     res.status(httpStatus.CREATED).send({
-      result,
+      ...result,
     });
   } catch (err) {
     const { message, status } = new InternalError(err);
@@ -33,7 +33,7 @@ export const findAll = async (req: Request, res: Response) => {
     const result = await findAllApi(review);
 
     res.send({
-      result,
+      ...result,
     });
   } catch (err) {
     const { message, status } = new InternalError(err);

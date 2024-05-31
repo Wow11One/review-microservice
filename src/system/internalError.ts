@@ -16,7 +16,7 @@ export class InternalError {
       statusText,
       status,
     } = error as ErrorType;
-    this.status = status || httpStatus.INTERNAL_SERVER_ERROR;
+    this.status = status || httpStatus.BAD_REQUEST;
     this.message = statusText || message || 'An unexpected error occurred';
   }
 }
