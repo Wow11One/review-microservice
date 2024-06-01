@@ -1,20 +1,37 @@
-# nodejs-sample
-This is an example node js project using typescript, consul, express, mongoose, mocha.
+# review-microservice
+This is the review microservice developed for a profITsoft academy project. 
+The review entity has such fields: ratingValue (should be between 1 and 5),
+text and bookId (foreign key for book entity from java microservice).
 
-# How to run "for the prod"
+# Endpoints
+* `POST /api/review` - creates a new review entity.
+* `GET /api/review` - returns a list of reviews. Has required parameter - bookId.
+Also, there are 2 optional params: from and size. They are needed for pagination.
+* `POST /api/_counts` - counts the occurrences of review with certain bookId. 
+Takes array of bookId's as a request body and return an object, where the key is
+the bookId and value is the count.
 
-Just execute `docker-compose up`
 
-It will run all services in containers (nodejs-sample, db and consul).
-Once consul is running, all key-values will be added automatically.
-Once consul and db are running, nodejs-sample will be started.
+# How to run
 
-After that you can check the service by calling
-GET: `http://localhost:8888/ping`
-response will be `PONG`
+Execute `docker-compose up`
 
+It will run all services in containers (review-service, db and consul).
+Once consul and db are running, review-service will be started.
 All consul kv's and mongoDB data will be stored in docker/data/...
 Thus, when the containers are restarted, data will not be lost.
+
+Additionally, it is important to run [book-microservice](https://github.com/Wow11One/book-rest-api),
+as they communicate with each other and have one common network in docker. Otherwise, review-microservice 
+won't work. Anyway, you can run tests
+
+# How to run tests
+
+```
+npm run test
+```
+
+If everything is fine, you should see the list of passed tests
 
 # Configuration
 
@@ -39,46 +56,3 @@ for "dev" version
 `config/nodejs-sample/dev/port` : `8888`
 
 `config/nodejs-sample/dev/mongo.address` : `mongodb://127.0.0.1:27018`
-
-
-run nodejs-sample again
-
-# Setup
-Run `npm install` in the terminal
-
-# How to run for the prod
-
-When consul and mongoDB containers are running
-```
-npm run start
-```
-
-If everything is fine, you will see:
-"Example app listening on port localhost:8888"
-
-# How to develop
-
-```
-npm run devel
-```
-
-# How to build
-
-```
-npm run build
-```
-
-# How to run tests
-
-```
-npm run test
-```
-
-If everything is fine, you should see the list of passed tests
-
-# How to check coverage
-
-```
-npm run coverage
-```
-If everything is fine, you should see the table with coverage after passed tests

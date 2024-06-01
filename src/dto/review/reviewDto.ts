@@ -3,5 +3,5 @@ export interface ReviewDto {
   ratingValue: number;
   text: string;
   bookId: number;
-  createdAt: Date;
+  createdAt: string;
 }

@@ -17,9 +17,7 @@ export const create = async (req: Request, res: Response) => {
       ...review,
     });
 
-    res.status(httpStatus.CREATED).send({
-      ...result,
-    });
+    res.status(httpStatus.CREATED).send(result);
   } catch (err) {
     const { message, status } = new InternalError(err);
     log4js.getLogger().error('Error in creating review.', err);
@@ -32,9 +30,7 @@ export const findAll = async (req: Request, res: Response) => {
     const review = new ReviewQueryDto(req.query);
     const result = await findAllApi(review);
 
-    res.send({
-      ...result,
-    });
+    res.send(result);
   } catch (err) {
     const { message, status } = new InternalError(err);
     log4js.getLogger().error('Error in reading reviews.', err);

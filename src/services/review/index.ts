@@ -62,12 +62,12 @@ export const countReviews = async (bookIds: number[]): Promise<{ [key: number]: 
   return result;
 };
 
-const mapToReviewDto = (review: IReview): ReviewDto => ({
-  id: review._id,
+export const mapToReviewDto = (review: IReview): ReviewDto => ({
+  id: review._id.toString(),
   ratingValue: review.ratingValue,
   text: review.text,
   bookId: review.bookId,
-  createdAt: review.createdAt,
+  createdAt: review.createdAt.toString(),
 });
 
 
